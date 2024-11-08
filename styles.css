@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center ;
+    flex-direction: column;
+}
+.title{
+    padding: 5px 20px 5px 20px;
+    font-size: large;
+    font-weight: bold;
+    color:black;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+button{
+    background-color: #3882f6;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px 5px 20px;
+    color:white;
+    transition: background-color 30ms;
+}
+button:hover{
+    background-color: #3071da;
+    transition: background-color 30ms;
+}

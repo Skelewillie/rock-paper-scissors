@@ -11,10 +11,6 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
-    return (prompt("Do you choose rock, paper, or scissors?").toLowerCase())
-}
-
 function playRound(human, computer){
     let winner = ""
     if ((human == "rock") && (computer == "rock")){
@@ -43,25 +39,18 @@ function playRound(human, computer){
 
     switch(winner){
         case "Tie":
-            console.log(`You played ${human}, the computer played ${computer}. Game Tied`)
             return winner
     }
     
-    console.log(`You played ${human}, the computer played ${computer}. ${winner} won`)
     return winner
 }
 
-function playGame(){
-    let compChoice = getComputerChoice()
-    
-    var Cscore = 0
-    var Hscore = 0
-    var ties = 0
+function playSection(humanChoice,compChoice){
 
-    for(var i = 0; i < 5 ; i++){
-        let humChoice = getHumanChoice()
-        let winner = playRound(humChoice, compChoice)
 
+    let winner= playRound(humanChoice, compChoice);
+
+    if(Cscore+Hscore+ties != 5){
         switch(winner){
             case "Computer":
                 Cscore ++
@@ -72,8 +61,35 @@ function playGame(){
             case "Tie":
                 ties++
         }
-        console.log(`You won ${Hscore} games, the computer won ${Cscore} games. You tied ${ties} games`)
+    }else{
+        return `Game over! You won ${Hscore} games, the computer won ${Cscore} games. You tied ${ties} games, `
     }
+
+    return `You won ${Hscore} games, the computer won ${Cscore} games. You tied ${ties} games`
 }
 
-playGame()
+const rock = document.querySelector("button#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const results = document.querySelector('.results')
+
+var Cscore = 0
+var Hscore = 0
+var ties = 0
+
+
+rock.addEventListener("click",() =>{
+    results.textContent = playSection('rock',getComputerChoice())
+})
+paper.addEventListener("click",() =>{
+    results.textContent = playSection('paper',getComputerChoice())
+})
+scissors.addEventListener("click",() =>{
+    results.textContent = playSection('scissors',getComputerChoice())
+})
+    
+
+
+
+
+
